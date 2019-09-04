@@ -1,0 +1,13 @@
+.lottery{width: 900px;margin: 20px auto;position: relative; /*animation: scalebig .5s .8s ease both;*/}
+@keyframes scalebig {
+    0%{opacity:0;-webkit-transform:scale(0);transform:scale(0)}
+    100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}
+}
+.lottery-bg{background: url(../img/wht-dzp/dzp-bg.png);_background-image: url(../img/wht-dzp/dzp-bg-ie.png);width: 1027px;height: 865px;}
+.lottery-pointer{position:absolute;/*background: url(../img/wht-game-dzp-arrow.png) no-repeat;*/width: 254px;height: 264px;left: 298px;top: 181px;}
+.lotter-start{cursor: pointer;position:absolute;background: url(../img/wht-dzp/dzp-btn.png) no-repeat 0 -15px;_background-image: url(../img/wht-dzp/dzp-btn-ie.png);width: 192px;  height: 194px; left: 327px;top: 218px;}
+.lotter-start:hover{background-position: 0 -236px;}
+
+
+
+

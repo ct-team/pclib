@@ -1,0 +1,193 @@
+@charset "UTF-8";
+/*********************万花筒弹窗UI***********************/
+/********************主体部分start***********************/
+.whtui-wrap {
+  width: 326px;
+  overflow: hidden; }
+
+/*.whtui-wrap{margin: 5px; background-color: #a98827;overflow: hidden;} 外框有边框的时候需要编辑*/
+.whtui-top {
+  background-color: #ff4800;
+  width: 326px;
+  height: 48px;
+  line-height: 48px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative; }
+
+.whtui-top .title {
+  font-size: 20px;
+  color: #fff;
+  font-family: 'Microsoft YaHei', '微软雅黑';
+  font-weight: 400;
+  padding-left: 10px; }
+
+.whtui-top a {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  text-indent: -9999px;
+  display: inline-block;
+  background: url(../img/wht-dialog/close-btn.png);
+  _background-image: url(../img/wht-dialog/close-btn-ie.png);
+  width: 22px;
+  height: 22px; }
+
+.whtui-top .layui-layer-close1 {
+  background-position: 0 0; }
+
+.whtui-top .layui-layer-close1:hover {
+  background-position: -47px 0; }
+
+.whtui-bottom {
+  text-align: center; }
+
+.whtui {
+  position: relative; }
+
+/********************主体部分end***********************/
+/********************基础样式start***********************/
+.whtui .msg-con {
+  width: 326px;
+  padding: 30px 0;
+  display: block;
+  overflow: hidden;
+  background-color: #ffffff; }
+
+/*sorry图标*/
+.whtui i {
+  background: url(../img/wht-dialog/icons.png) no-repeat 400px 400px;
+  width: 64px;
+  height: 52px;
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 10px;
+  float: left; }
+
+.whtui .i-sorry {
+  background-position: 0 0; }
+
+.whtui .msg-left {
+  float: left; }
+
+.whtui .msg-right {
+  float: right; }
+
+.whtui .msg-center {
+  text-align: center; }
+
+.whtui .select {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: none; }
+
+/*不再提示的复选框，默认不显示，需要编辑*/
+/*h3样式*/
+.whtui .msg-con .h3 {
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #ff4800; }
+
+.whtui .msg-con .h3-1 {
+  color: #541d29; }
+
+/*sim样式*/
+.whtui .msg-con .sim {
+  font-size: 14px;
+  color: #541d29; }
+
+/*按钮样式*/
+/*(非常重要！！！！)弹窗的底部按钮样式在同级目录下的layer-myskin.css进行编辑*/
+/********************基础样式end*************************/
+/********************弱提示start*************************/
+.whtui .msg-weak {
+  height: 50px;
+  width: 180px;
+  border: 3px solid #ff4800;
+  background-color: #ffffff;
+  padding: 5px; }
+
+.whtui .msg-weak h3 {
+  margin-top: 15px;
+  color: #541d29;
+  font-size: 14px; }
+
+.whtui .i-warn {
+  background-position: 0 -52px;
+  width: 32px;
+  height: 32px;
+  margin-top: 8px; }
+
+.msg-weak .whtui-bottom {
+  /*background: url(../img/wht-dialog/msg-bg.png) no-repeat 0 -89px;*/
+  height: 40px; }
+
+/*妖豆类的弱弹窗,底部带背景的时候需要编辑*/
+/********************弱提示end**************************/
+/********************带单一图片的弹窗start***********************/
+.whtui .msg-con-img {
+  padding: 10px 0; }
+
+.whtui .msg-con-img .h3 {
+  margin-bottom: 10px; }
+
+.whtui .msg-img {
+  background: url(../img/wht-dialog/prizes.png) no-repeat -999px -999px;
+  display: inline-block;
+  width: 86px;
+  height: 86px;
+  margin: 5px auto; }
+
+.whtui .msg-img-1 {
+  background-position: 0 0; }
+
+.whtui .msg-img-2 {
+  background-position: 0 -86px; }
+
+/*.whtui .my-reward-img-4{background-position:-589px -115px}
+.whtui .my-reward-img-5{background-position:-393px 0}
+.whtui .my-reward-img-6{background-position:-393px -115px}
+.whtui .my-reward-img-7{background-position:-196px 0}
+.whtui .my-reward-img-8{background-position:-196px -115px}
+.whtui .my-reward-img-9{background-position:0 0}
+.whtui .my-reward-img-10{background-position:0 -115px}*/
+/********************带单一图片的弹窗end***********************/
+/***********带奖励列表的弹窗start【待开发，可先忽略】*************/
+.whtui .msg-con-list {
+  padding: 24px 0; }
+
+.whtui .msg-con-list .h3 {
+  margin-bottom: 10px; }
+
+.whtui .msg-ul-list {
+  width: 210px;
+  height: 120px;
+  background-color: #f54a24;
+  text-align: center;
+  margin: 0 auto;
+  color: #fff;
+  padding: 5px 0; }
+
+.whtui .J-msgList {
+  overflow: hidden; }
+
+.whtui .msgList-nicescroll-rails {
+  width: 5px;
+  height: 120px;
+  position: absolute;
+  top: 58px;
+  left: 280px;
+  border-radius: 10px; }
+
+/********************带奖励列表的弹窗end***********************/
+.s-orange {
+  color: #f56e00; }
+
+.s-myconpon {
+  color: #f56e00; }
+
+.s-myconpon:hover {
+  color: #f18934; }

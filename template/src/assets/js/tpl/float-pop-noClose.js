@@ -1,0 +1,1 @@
+define(function(){return '<div class="whtui"><div class="msg-weak"><div class="msg-left clearfix"><h3 class="h3 J_con"></h3></div></div></div>'});

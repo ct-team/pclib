@@ -1,0 +1,121 @@
+.rule {
+  position: relative;
+  background-color: #ffffff;
+  overflow: hidden; }
+  .rule .top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 48px;
+    background-color: #ff4800; }
+    .rule .top span {
+      background-image: url("../img/wht-dialog/wht-dialog-btn.png");
+      background-position: 0px  0px;
+      width: 305px;
+      height: 48px;
+      display: block;
+      width: 288px;
+      margin: 0 auto; }
+    .rule .top a {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      text-indent: -9999px;
+      display: inline-block;
+      background: url(../img/wht-dialog/close-btn.png);
+      _background-image: url(../img/wht-dialog/close-btn-ie.png);
+      width: 22px;
+      height: 22px; }
+    .rule .top .layui-layer-close1 {
+      background-position: 0 0; }
+    .rule .top .layui-layer-close1:hover {
+      background-position: -47px 0; }
+  .rule .content {
+    position: absolute;
+    top: 48px;
+    left: 0; }
+    .rule .content .s-orange {
+      color: #ff4800; }
+    .rule .content a {
+      color: #ff4800; }
+      .rule .content a:hover {
+        color: #c4410d; }
+  .rule .wrap ul {
+    margin-bottom: 10px; }
+  .rule .wrap ul li {
+    text-align: justify;
+    padding-left: 14px;
+    font-size: 12px;
+    font-family: "Simsun";
+    color: #511d2a;
+    line-height: 20px;
+    _height: 20px;
+    display: inline-block; }
+    .rule .wrap ul li em {
+      padding-left: 12px; }
+  .rule .wrap ul li i {
+    background-image: url("../img/wht-dialog/wht-dialog-btn.png");
+    background-position: -282px  -106px;
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 7px;
+    _margin-top: 8px; }
+  .rule .wrap table {
+    margin-top: 4px;
+    margin-bottom: 10px; }
+    .rule .wrap table td {
+      border: 1px solid #ffbca1;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14px;
+      font-family: "Microsoft Yahei";
+      color: #ffffd9;
+      height: 36px;
+      line-height: 36px; }
+    .rule .wrap table td {
+      width: 60px;
+      background-color: #ffffd9;
+      color: #511d2a; }
+    .rule .wrap table .td-title {
+      width: 128px;
+      background-color: #ff4800;
+      color: #ffffd9; }
+  .rule .wrap1 h3 {
+    margin-top: 8px;
+    background-image: url("../img/wht-dialog/wht-dialog-btn.png");
+    background-position: 0px  -202px;
+    width: 87px;
+    height: 31px; }
+  .rule .wrap2 h3 {
+    background-image: url("../img/wht-dialog/wht-dialog-btn.png");
+    background-position: -92px  -202px;
+    width: 125px;
+    height: 31px; }
+
+.rule1 {
+  width: 695px;
+  height: 533px; }
+  .rule1 .top {
+    width: 695px; }
+  .rule1 ul li {
+    width: 683px; }
+
+.rule2 {
+  width: 420px;
+  height: 425px; }
+  .rule2 .top {
+    width: 420px; }
+  .rule2 ul, .rule2 ul li {
+    width: 384px; }
+
+.rule3 {
+  width: 591px;
+  height: 320px; }
+  .rule3 .top {
+    width: 591px; }
+  .rule3 ul, .rule3 ul li {
+    width: 550px; }
+  .rule3 .wrap2 h3 {
+    margin-top: 8px; }

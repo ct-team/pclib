@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <title>万花筒-拼图demo</title>
+    <meta name="Keywords" content="万花筒-拼图demo"/>
+    <meta name="description" content="万花筒-拼图demo"/>
+    <link rel="shortcut icon" href='//www.yaodou.com/images/favicon.ico'/>
+    <link rel="stylesheet" href="//static.tcy365.com/common/style/base.css" type="text/css">
+    <!--build:css ./assets/css/main-v1.0.0.min.css -->
+    <link rel="stylesheet" href="assets/css/wht-pt.css">
+    <!-- endbuild -->
+    <script>
+        var wht = {};
+    </script>
+</head>
+
+<body class="yahei">
+<div id="YDSiteNav" class="YDSiteNav"></div>
+
+
+<div class="cube"></div>
+
+<div class="btnbox">
+    <div id="startBtn" class="btn J-startBtn">开始</div>
+    <div id="resetBtn" class="btn J-resetBtn">重置</div>
+</div>
+
+
+<script src="//static.tcy365.org:1505/??cdn/jquery/1.7.1/jquery.js,yd/common/js/basejs/1.1.1/base.js,cdn/dialog/1.3/dialog.js,common/component/pc/top/ydActivity/1.1.0/top.js,cdn/template/3.0.0/template.js,cdn/seajs/3.0.0/sea.js,common/component/pc/ietip/1.0.0/js/lowVersionTip.js?v=20180402"></script>
+
+<!--引入wht.game.js处理文件-->
+<script src="../../wht.game.js"></script>
+
+<script>
+    seajs.use('../pt', function (pt) {
+        var ptdMain = pt;
+        var isBind = false; // 按钮绑定
+
+        function dealing() {
+            if (isBind) {
+                return;
+            }
+            isBind = true;
+
+
+            // 监听拼图成功的事件、或者倒计时监听拼图失败的事件
+            // 拼图倒计时结束后传值,status=2拼图成功,status=3拼图失败
+
+            // 拼图成功
+            wht.game('pt1').stop(1, function () {
+                alert('拼图成功！！');
+                setTimeout(function(){
+                    wht.game('pt1').reset();
+                    isBind = false;
+                }, 2000);
+            });
+
+            // 拼图失败
+            // 假设一个定时器
+            /*var time = 10;
+            var timer = setInterval(function () {
+                time -= 1;
+                console.log(time);
+                if (time <= 0) {
+                    clearInterval(timer);
+                    console.log('拼图失败！！');
+                    wht.game('pt1').reset();
+                }
+            }, time);*/
+
+        }
+
+        function btnBind() {
+            $('.J-startBtn').click(function () {
+
+                if(wht.game('pt1').isStart){
+                    alert('您还在游戏中');
+                    return;
+                }
+
+                // 启动
+                wht.game('pt1').start();
+
+                dealing();
+            });
+
+            $('.J-resetBtn').click(function () {
+                if(wht.game('pt1') == null){
+                    return;
+                }
+                wht.game('pt1').reset();
+            });
+        }
+
+        function initconfig() {
+            wht.gameInit({
+                name: 'pt1',
+                type: 'pt',
+                param: {
+                    // 拼图图片路径
+                    img: "assets/img/wht-pt/1.jpg",
+                    // 拼图图片碎片数量
+                    pieces: [3, 3],
+                    // 拼图区域；
+                    area: ".cube",
+                    pieceClass: ".cube div.imgCell",
+                    // 拼图切片运动速度，单位毫秒
+                    movetime: 400
+                },
+                // 指定由哪个游戏组件进行初始化配置项
+                specifyConfItem: function (o) {
+                    return ptdMain.init(o);
+                }
+            });
+        }
+
+        function init() {
+            initconfig();
+            btnBind();
+        }
+
+        init();
+    });
+
+</script>
+</body>
+</html>
