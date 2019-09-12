@@ -44,9 +44,10 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('src/assets/css/'));
 });
 
-gulp.task('clean-sass', function() {
+
+gulp.task('clean-buildAll', function() {
     return gulp
-        .src(config.build + config.staticCss, { read: false })
+        .src(['dist/build','dist/build2','dist/readme.md'], { read: false })
         .pipe(clean());
 });
 //清除已有文件夹
@@ -266,6 +267,7 @@ gulp.task(
         'copy-stitac',
         'replace-html',
         'clean-rev',
-        'imgMin'
+        'imgMin',
+        'clean-buildAll'
     )
 );

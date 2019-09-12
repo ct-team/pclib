@@ -1,1 +1,0 @@
-!function(){window.bb="<div>xxx</div>"}();

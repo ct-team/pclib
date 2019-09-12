@@ -9,14 +9,10 @@
     <meta name="Keywords" content="妖豆活动基础项目" />
     <meta name="description" content="妖豆活动基础项目" />
     <link rel="shortcut icon" href="//static.tcy365.com/uc/common/images/favicon.ico">
-    <link rel="stylesheet" href="//static.tcy365.com/common/style/base.css" type="text/css">
     <link rel="stylesheet" href="//static.tcy365.org:1506/static/aa/assets/css/main-64fdffc09f.css">
 </head>
 
-<body class="yahei">
-
-    <div id="YDSiteNav" class="YDSiteNav">111111</div>
-
+<body>
     <div class="m-act">
         <div class="m-a1 J-act1">
             <div class="m-act-time">活动时间: <span class="J-act-time">--</span>
@@ -36,30 +32,18 @@
             </div>
         </div>
     </div>
-
     <script src="//static.tcy365.com/??cdn/jquery/1.7.1/jquery.js,cdn/dialog/1.3/dialog.js,cdn/template/3.0.0/template.js,cdn/seajs/3.0.0/sea.js?v=20180316"></script>
-    <script src="//static.tcy365.org:1506/static/aa/assets/a.js"></script>
-    <!--弹窗组件一定要单独一行加载-->
+
+    <script src="//static.tcy365.org:1506/static/aa/assets/a.js"></script>    
+
+    <!--assets 资源 -->
     <script src="//static.tcy365.org:1506/static/aa/assets/js/test-c1fbfcee1e.js"></script>
-    <script src="//static.tcy365.org:1506/static/aa/assets/js/lib/main-0c24b5dcac.js"></script>
-    <script src="//static.tcy365.org:1506/static/aa/assets/js/lib/wht.min.js"></script>
     <script>
-        layer.config({
-            // 自定义皮肤的样式文件：万花筒弹窗头部和底部样式
-            // 路径是相对于layer/theme/目录下的路径，或者设置绝对路径
-            extend: '../../../../css/layer-myskin.css'
-        });
-
         seajs.config({
-            base: '//static.tcy365.org:1506/static/aa/assets/',
-            map: [
-                [/^(.*\.(?:css|js))(.*)$/i, '$1?20180507']
-            ]
+            base: '//static.tcy365.org:1506/static/aa/assets/'
         });
 
-        seajs.use('js/app/app-14f3caaf05.js', function (app) {
-            app.init();
-        });
+        seajs.use('js/app/app-da235a0a08.js');
     </script>
 </body>
 
