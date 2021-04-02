@@ -5,8 +5,10 @@ define(function (require, exports, module) {
         // 初始化万花筒
 
         // 初始化各个活动
+        
+        
         actInit.init();
-
+        alert('ok')
 
 });
 

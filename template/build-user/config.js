@@ -2,7 +2,7 @@ module.exports = {
     baseUrl: '//static.tcy365[webport]',  //项目资源根目录 [webport] 后缀标识符 默认不修改
     appUrl: '/static/aa/',                //项目路径  如   /mobile/test/
     isHttps:false,                         //是否使用https域名
-    isImageMin:true,                      //是否使用图片压缩 【不建议关闭】
+    //isImageMin:true,                      //是否使用图片压缩 【不建议关闭】
     list: [
         { title: '1505-stable', webPort: '.org:1505' },
         { title: '1507-test', webPort: '.org:1507' },
@@ -10,7 +10,7 @@ module.exports = {
         { title: '2505-pre', webPort: '.com:2505' },
         { title: '80-static', webPort: '.com' }
     ],
-    //seajs 打包配置 默认使用 []
+    //seajs 打包配置 默认使用 [] 
     seajs: [ 
         {
             Entry: 'assets/js/app/',      //文件入口文件夹

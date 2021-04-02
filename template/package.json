@@ -1,6 +1,6 @@
 {
     "name": "pc",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "description": "",
     "main": "gulpfile.js",
     "directories": {
@@ -8,7 +8,7 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "gulp dev",
+        "serve": "gulp dev",
         "build": "gulp",
         "sprite": "gulp sprite",
         "clean": "rimraf node_modules"
@@ -32,7 +32,6 @@
         "gulp-connect": "^5.7.0",
         "gulp-eslint": "^4.0.2",
         "gulp-htmlmin": "^3.0.0",
-        "gulp-imagemin": "^6.1.0",
         "gulp-if": "^2.0.2",
         "gulp-minify-css": "^1.2.4",
         "gulp-postcss": "^7.0.1",

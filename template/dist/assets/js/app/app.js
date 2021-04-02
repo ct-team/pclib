@@ -1,0 +1,1 @@
+define("a",function(n,i,o){function e(){console.log(1)}o.exports={init:e}}),define("app",["a"],function(n,i,o){n("a").init(),alert("ok")});
