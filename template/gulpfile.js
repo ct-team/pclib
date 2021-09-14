@@ -22,6 +22,7 @@ var proxy = require("http-proxy-middleware");
 var spritesmith = require("gulp.spritesmith");
 //var imagemin = require("gulp-imagemin");
 var babel = require("gulp-babel");
+var ejs = require("gulp-ejs")
 gulp.task("help", function () {
     console.log("sprite 生成雪碧图");
 });
@@ -230,21 +231,30 @@ gulp.task("reload", function () {
 });
 
 gulp.task("connect", function () {
-    connect.server({
-        /*根路径*/
-        root: "./src",
-        /*开启浏览器自动刷新*/
-        livereload: true,
-        /*端口号*/
-        port: config.port,
-        /*使用代理服务*/
-        middleware: function (connect, opt) {
-            if (!config.proxy) {
-                return;
-            }
-            return [proxy(config.proxy.path, config.proxy.opt)];
+    connect.server(
+        {
+            /*根路径*/
+            root: "./src",
+            /*开启浏览器自动刷新*/
+            livereload: true,
+            host: "0.0.0.0", //ip可访问
+            /*端口号*/
+            port: config.port,
+            /*使用代理服务*/
+            middleware: function (connect, opt) {
+                if (!config.proxy) {
+                    return;
+                }
+                return [proxy(config.proxy.path, config.proxy.opt)];
+            },
         },
-    });
+        function () {
+            console.log(
+                "\x1B[32m%s\x1B[32m",
+                "Server started http://localhost:" + config.port
+            );
+        }
+    );
 });
 gulp.task("dev", ["sass", "connect", "watch"]);
 //开发源代码生成

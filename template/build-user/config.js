@@ -1,7 +1,7 @@
 module.exports = {
     baseUrl: '//static.tcy365[webport]',  //项目资源根目录 [webport] 后缀标识符 默认不修改
     appUrl: '/static/aa/',                //项目路径  如   /mobile/test/
-    isHttps:false,                         //是否使用https域名
+    isHttps:false,                         //是否使用https域名 https 会使用 innerstatic 代替 org:1505
     //isImageMin:true,                      //是否使用图片压缩 【不建议关闭】
     list: [
         { title: '1505-stable', webPort: '.org:1505' },

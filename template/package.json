@@ -1,6 +1,6 @@
 {
     "name": "pc",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "",
     "main": "gulpfile.js",
     "directories": {
@@ -30,6 +30,7 @@
         "gulp-babel": "^8.0.0",
         "gulp-clean": "^0.3.2",
         "gulp-connect": "^5.7.0",
+        "gulp-ejs": "^5.1.0",
         "gulp-eslint": "^4.0.2",
         "gulp-htmlmin": "^3.0.0",
         "gulp-if": "^2.0.2",
