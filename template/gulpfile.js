@@ -121,7 +121,11 @@ gulp.task("compress-css", function () {
                 }),
             ])
         )
-        .pipe(minifycss())
+        .pipe(
+            minifycss({
+                compatibility: "ie6",
+            })
+        )
         .pipe(gulp.dest("dist/build2/assets/"));
 });
 gulp.task("copy-img", function () {
