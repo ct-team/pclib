@@ -123,7 +123,7 @@ gulp.task("compress-css", function () {
         )
         .pipe(
             minifycss({
-                compatibility: "ie6",
+                compatibility: "ie7",
             })
         )
         .pipe(gulp.dest("dist/build2/assets/"));
