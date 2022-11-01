@@ -22,7 +22,7 @@ var proxy = require("http-proxy-middleware");
 var spritesmith = require("gulp.spritesmith");
 //var imagemin = require("gulp-imagemin");
 var babel = require("gulp-babel");
-var ejs = require("gulp-ejs")
+var ejs = require("gulp-ejs");
 gulp.task("help", function () {
     console.log("sprite 生成雪碧图");
 });
@@ -136,6 +136,7 @@ gulp.task("copy-img", function () {
 gulp.task("copy-stitac", function () {
     return gulp.src("src/static/**").pipe(gulp.dest("dist/assets/"));
 });
+
 gulp.task("copy-html", function () {
     return gulp.src("dist/build/*.html").pipe(gulp.dest("dist/build2/"));
 });
@@ -167,6 +168,7 @@ gulp.task("replace-html", function () {
                 )
                 .pipe(replace("static.tcy365.com:2505", "prestatic.tcy365.com"))
                 .pipe(gulp.dest("dist/" + item.title));
+            gulp.src("static/**").pipe(gulp.dest("dist/" + item.title));
         });
     } else {
         config.list.forEach(function (item) {
@@ -185,6 +187,7 @@ gulp.task("replace-html", function () {
                 )
                 .pipe(replace("[webport]", item.webPort))
                 .pipe(gulp.dest("dist/" + item.title));
+            gulp.src("static/**").pipe(gulp.dest("dist/" + item.title));
         });
     }
 
@@ -238,7 +241,7 @@ gulp.task("connect", function () {
     connect.server(
         {
             /*根路径*/
-            root: "./src",
+            root: ["./src", "./static"],
             /*开启浏览器自动刷新*/
             livereload: true,
             host: "0.0.0.0", //ip可访问
@@ -279,8 +282,8 @@ gulp.task(
         "copy-assets",
         "copy-stitac",
         "replace-html",
-        "clean-rev",
+        "clean-rev"
         //"imgMin",
-        "clean-buildAll"
+        //"clean-buildAll"
     )
 );
