@@ -1,0 +1,1 @@
+define("a",[],function(){function i(){$("#test").click(function(){console.log("is a init.")})}return{init:i}});var baseUrl="";baseUrl="//static.tcy365.com/static/xxx/",requirejs.config({baseUrl:baseUrl+"assets/js/app2/",urlArgs:(new Date).getTime(),paths:{}}),requirejs(["./a"],function(i){i.init()}),define("main",function(){});

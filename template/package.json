@@ -16,6 +16,7 @@
         "build:dev": "cross-env NODE_ENV=dev gulp",
         "build:inner": "cross-env NODE_ENV=stable gulp",
         "sprite": "gulp sprite",
+		"tplhtml": "gulp dev-htmltpl",
         "clean": "rimraf node_modules"
     },
     "author": "",

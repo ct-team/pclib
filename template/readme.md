@@ -39,6 +39,22 @@ static 文件夹下的内容会复制到 html 文件夹内
 <script src="/test.js"></script>
 ```
 
+## NODE_ENV 使用
+
+```
+//html页面使用
+<!-- @if NODE_ENV = 'stable' -->
+<script src="//static.tcy365.com/cdn/jquery/1.8.2/jquery.js"></script>
+<!-- @endif -->
+
+//js使用
+var baseUrl='';
+// @if NODE_ENV = 'stable'
+baseUrl = '//static.tcy365.org:1505/static/xxx/';
+// @endif
+
+```
+
 ## log
 
 | 版本  | 说明                                                     |

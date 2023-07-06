@@ -13,6 +13,7 @@ var del = require('del');
 var wrap = require('gulp-wrap');
 var rename = require('gulp-rename');
 var seajsCombo = require('gulp-seajs-combo');
+var requirejsOptimize = require('gulp-requirejs-optimize');
 var config = require('./build-user/config.js');
 var minifycss = require('gulp-minify-css');
 var postcss = require('gulp-postcss');
@@ -64,6 +65,9 @@ gulp.task('clean-rev', function () {
         .pipe(clean());
 });
 gulp.task('seajscombo2', function () {
+    if (!config.seajs) {
+        return gulp;
+    }
     config.seajs.forEach(function (item) {
         return gulp
             .src('src/' + item.Entry + item.Name)
@@ -82,6 +86,9 @@ gulp.task('seajscombo2', function () {
     });
 });
 gulp.task('requirejsOptimize', function () {
+    if (!config.requirejs) {
+        return gulp;
+    }
     config.requirejs.forEach(function (item) {
         return gulp
             .src('src/' + item.Entry + item.Name)
@@ -115,6 +122,42 @@ gulp.task('sprite', function () {
             )
             .pipe(gulp.dest('src/'));
     });
+});
+// 雪碧图生成
+gulp.task('sprite-build', function () {
+    var spriteUrl = 'src/';
+    var arr = config.sprites;
+    for (let i = 0; i < arr.length; i++) {
+        (function (curI) {
+            let item = arr[curI];
+            return gulp
+                .src(spriteUrl + item.Entry + '*')
+                .pipe(
+                    rename(function (path) {
+                        let entryArr = item.Entry.split('/');
+                        let name = entryArr[entryArr.length - 2];
+                        // console.log(entryArr);
+                        // console.log('name='+name);
+                        if (typeof item.Name === 'undefined') {
+                            path.basename = name + '-' + path.basename;
+                            return;
+                        }
+                        path.basename = item.Name + '-' + path.basename;
+                        // console.log(path.basename);
+                    })
+                )
+                .pipe(
+                    spritesmith({
+                        imgName: item.OutImg, //保存合并后图片的地址
+                        cssName: item.OutCss, //保存合并后对于css样式的地址
+                        padding: item.padding, //合并时两个图片的间距
+                        algorithm: item.algorithm,
+                        cssTemplate: spriteUrl + item.cssTemplate
+                    })
+                )
+                .pipe(gulp.dest('src/'));
+        })(i);
+    }
 });
 gulp.task('useref', function () {
     return gulp
@@ -173,7 +216,17 @@ gulp.task('copy-stitac', function () {
 });
 
 gulp.task('copy-html', function () {
-    return gulp.src('dist/build/*.html').pipe(gulp.dest('dist/build2/'));
+    return gulp
+        .src('dist/build/*.html')
+        .pipe(
+            preprocess({
+                context: {
+                    // 此处可接受来自调用命令的 NODE_ENV 参数，默认为 development 开发测试环境
+                    NODE_ENV: process.env.NODE_ENV || 'development'
+                }
+            })
+        )
+        .pipe(gulp.dest('dist/build2/'));
 });
 gulp.task('copy-assets', function () {
     return gulp.src('dist/build2/assets/**').pipe(gulp.dest('dist/assets/'));
@@ -268,14 +321,47 @@ gulp.task('prefixer', function () {
         )
         .pipe(gulp.dest('dist/build/assets/css/'));
 });
+//模板化
+gulp.task('htmltpl', function () {
+    var options = {
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        minifyJS: true,
+        minifyCSS: true
+    };
 
+    return gulp
+        .src(config.staticTpl.sourcePath + '*.html')
+        .pipe(htmlmin(options))
+        .pipe(wrap("define(function(){return '<%= contents %>'});"))
+        .pipe(
+            rename(function (path) {
+                // console.log("😈: extname", path);
+                path.extname = '.js';
+            })
+        )
+        .pipe(gulp.dest(config.staticTpl.targetPath));
+});
 //全部监听
 gulp.task('watch', function () {
     gulp.watch('src/**/*.scss', ['sass']);
     gulp.watch('src/**/*.*', ['reload']);
 });
 gulp.task('reload', function () {
-    gulp.src('src/**/*.html').pipe(connect.reload());
+    gulp.src('src/**/*.html')
+        .pipe(
+            preprocess({
+                context: {
+                    // 此处可接受来自调用命令的 NODE_ENV 参数，默认为 development 开发测试环境
+                    NODE_ENV: process.env.NODE_ENV || 'development'
+                }
+            })
+        )
+        .pipe(connect.reload());
 });
 
 gulp.task('connect', function () {
@@ -304,6 +390,10 @@ gulp.task('connect', function () {
         }
     );
 });
+// html模板生成
+gulp.task('dev-htmltpl', ['htmltpl']);
+// 雪碧图生成
+gulp.task('dev-sprite', ['sprite-build']);
 gulp.task('dev', ['sass', 'connect', 'watch']);
 //开发源代码生成
 gulp.task(
@@ -314,6 +404,7 @@ gulp.task(
         'build', //建立build
         'copy-img',
         'seajscombo2',
+        'requirejsOptimize',
         'useref',
         'copy-html',
         'revAll',
